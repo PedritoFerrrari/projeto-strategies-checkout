@@ -5,7 +5,6 @@ export interface DescontoStrategy {
 }
 
 export interface PagamentoStrategy {
-    // Retorna booleano conforme esperado pela validação if(pagamentoSucesso)
     processarPagamento(valorTotal: number): boolean;
 }
 

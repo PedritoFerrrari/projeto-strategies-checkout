@@ -11,7 +11,6 @@ import {
     NotificacaoSMSStrategy,
     NotificacaoWhatsAppStrategy} from "./strategies/implementations";
 
-// Criando pedidos de teste
 const pedidoA = new Pedido("PED-101", [
     { nome: "Mouse Gamer", preco: 150.00, quantidade: 1 }, 
     { nome: "Teclado Mecânico", preco: 350.00, quantidade: 1 }
@@ -25,14 +24,11 @@ const processador = new ProcessadorPedido( 
     new PagamentoPixStrategy(),
     new NotificacaoEmailStrategy()
 );
-// Execução 1: VIP + Pix + E-mail
 processador.finalizarPedido(pedidoA);
-// Execução 2: Mudança Dinâmica -> Quantidade + Cartão + WhatsApp
 processador.setDescontoStrategy(new DescontoPorQuantidadeStrategy());
 processador.setPagamentoStrategy(new PagamentoCartaoCreditoStrategy());
 processador.setNotificacaoStrategy(new NotificacaoWhatsAppStrategy());
 processador.finalizarPedido(pedidoB);
-// Execução 3: Mudança Dinâmica -> Cupom Fixo + Boleto + SMS
 processador.setDescontoStrategy(new DescontoCupomFixoStrategy(20));
 processador.setPagamentoStrategy(new PagamentoBoletoStrategy());
 processador.setNotificacaoStrategy(new NotificacaoSMSStrategy());

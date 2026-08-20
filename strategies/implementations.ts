@@ -3,7 +3,6 @@ import { DescontoStrategy, PagamentoStrategy, NotificacaoStrategy } from "./inte
 
 export class DescontoClienteVIPStrategy implements DescontoStrategy {
     calcularDesconto(pedido: Pedido): number {
-        // Desconto fixo de 15% sobre o valor total
         return pedido.valorTotal * 0.15;
     }
 }

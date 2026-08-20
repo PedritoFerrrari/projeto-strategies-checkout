@@ -11,7 +11,6 @@ export class Pedido {
         public destinatario: string
     ) {}
 
-    // Necessário para uso no ProcessadorPedido e nas Estratégias
     get valorTotal(): number {
         return this.itens.reduce((total, item) => total + (item.preco * item.quantidade), 0);
     }
